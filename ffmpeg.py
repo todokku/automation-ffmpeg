@@ -22,6 +22,7 @@ def correct_ass_timeline(fn):
                 ts2 = segs[2]
                 
                 if segs[-1].strip() in keyword_filter:
+                    line = f.readline()
                     continue
 
                 if not previous_ts:

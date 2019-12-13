@@ -1,6 +1,11 @@
+#!/usr/bin/env python
+#coding=utf-8
+
 import os
 import shutil
 
+
+keyword_filter = ['[音乐]', '[掌声]']
 
 def correct_ass_timeline(fn):
     with open(fn, 'r') as f:
@@ -15,6 +20,10 @@ def correct_ass_timeline(fn):
                 segs = line.split(',')
                 ts1 = segs[1]
                 ts2 = segs[2]
+                
+                if segs[-1].strip() in keyword_filter:
+                    continue
+
                 if not previous_ts:
                     previous_ts = ts2
                     result.append(line)
